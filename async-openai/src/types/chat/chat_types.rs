@@ -774,6 +774,7 @@ pub enum ServiceTier {
 #[derive(Clone, Serialize, Debug, Deserialize, PartialEq, Default)]
 #[serde(rename_all = "lowercase")]
 pub enum ReasoningEffort {
+    None,
     Minimal,
     Low,
     #[default]
@@ -901,7 +902,7 @@ pub struct CreateChatCompletionRequest {
 
     /// Constrains effort on reasoning for
     /// [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-    /// Currently supported values are `minimal`, `low`, `medium`, and `high`. Reducing
+    /// Currently supported values are `none`, `minimal`, `low`, `medium`, and `high`. Reducing
     /// reasoning effort can result in faster responses and fewer tokens used
     /// on reasoning in a response.
     /// Note: The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
