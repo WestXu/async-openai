@@ -278,8 +278,9 @@ pub struct ImageGenUsage {
 
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq)]
 pub struct ImagesResponse {
-    /// The Unix timestamp (in seconds) of when the image was created.
-    pub created: u32,
+    /// The Unix timestamp (in seconds) of when the image was created (not present in xAI).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub created: Option<u32>,
     /// The list of generated images.
     pub data: Vec<std::sync::Arc<Image>>,
     /// The background parameter used for the image generation. Either `transparent` or `opaque`.
